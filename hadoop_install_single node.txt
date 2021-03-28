@@ -83,5 +83,24 @@ jps
 
 
 
+100.26.29.51:50090 
+100.26.29.51:50075
+100.26.29.51:50070
+100.26.29.51:50030
+100.26.29.51:50060
 
+
+
+nano  wordcountfile
+this is test file
+
+hadoop fs -mkdir /user/hadoop
+
+hadoop fs -copyFromLocal wordcountfile /user/hadoop
+
+hadoop jar /usr/local/hadoop/hadoop-examples-1.2.1.jar wordcount /user/hadoop/wordcountfile /user/hadoop/result
+
+hadoop fs -ls /user/hadoop/result/
+hadoop fs -copyToLocal /user/hadoop/result/part-r-00000 .
+cat part-r-00000
 
