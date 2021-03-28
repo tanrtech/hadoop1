@@ -1,0 +1,81 @@
+
+  Single Node Installation
+
+sudo apt-get update
+
+ssh-keygen 
+
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+----------**downloading and installing java (Hadoop requires a working Java 1.6+)**--------
+
+sudo apt-get install openjdk-7-jdk
+
+
+-----------------------------**downloading hadoop**------------------------
+
+wget http://apache.mirror.gtcomm.net/hadoop/common/hadoop-1.2.1/hadoop-1.2.1.tar.gz
+
+tar -xzvf hadoop-1.2.1.tar.gz
+
+sudo mv hadoop-1.2.1 /usr/local/hadoop
+
+---------------------------**configuring bashrc linux env setup**---------------
+nano ~/.bashrc
+export HADOOP_PREFIX=/usr/local/hadoop/
+export PATH=$PATH:$HADOOP_PREFIX/bin
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME
+
+----**setting hadoop env**------
+nano /usr/local/hadoop/conf/hadoop-env.sh
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_OPTS=-Djava.net.preferIPV4Stack=true
+
+-------**configuring xml's**------
+nano /usr/local/hadoop/conf/core-site.xml
+<property>
+<name>fs.default.name</name>
+<value>hdfs://master.example.com:9000</value>
+</property>
+
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/usr/local/hadoop/tmp</value>
+</property>
+
+nano /usr/local/hadoop/conf/hdfs-site.xml
+<property>
+<name>dfs.replication</name>
+<value>1</value>
+</property>
+
+ nano /usr/local/hadoop/conf/mapred-site.xml
+<property>
+<name>mapred.job.tracker</name>
+<value>hdfs://master.example.com:9001</value>
+</property>
+
+----------**making tmp dir**---------
+
+mkdir /usr/local/hadoop/tmp
+
+-------------**exec bash**-------
+
+
+exec bash
+
+----------------**formatting hadoop namenode**--------------
+
+hadoop namenode -format
+
+---------------**starting hadoop services(daemons)**-------------------
+start-all.sh 
+
+jps
+
+
+
+
+
+
