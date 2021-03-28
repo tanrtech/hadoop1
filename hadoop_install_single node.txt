@@ -41,7 +41,7 @@ export HADOOP_OPTS=-Djava.net.preferIPV4Stack=true
 nano /usr/local/hadoop/conf/core-site.xml
 <property>
 <name>fs.default.name</name>
-<value>hdfs://master.example.com:9000</value>
+<value>hdfs://localhost:9000</value>
 </property>
 
 <property>
@@ -58,7 +58,7 @@ nano /usr/local/hadoop/conf/hdfs-site.xml
 nano /usr/local/hadoop/conf/mapred-site.xml
 <property>
 <name>mapred.job.tracker</name>
-<value>hdfs://master.example.com:9001</value>
+<value>hdfs://localhost:9001</value>
 </property>
 
 ----------**making tmp dir**---------
