@@ -23,7 +23,37 @@ tar -xzvf hadoop-1.2.1.tar.gz
 
 sudo mv hadoop-1.2.1 /usr/local/hadoop
 
+----------------- Centos7 ----------------- 
+#imran chaush
+#+918237267747
+
+
+nano ~/.bashrc
+
+export HADOOP_PREFIX=/usr/local/hadoop/
+export PATH=$PATH:$HADOOP_PREFIX/bin
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+export PATH=$PATH:$JAVA_HOME
+
+nano /usr/local/hadoop/conf/hadoop-env.sh
+
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+export HADOOP_OPTS=-Djava.net.preferIPV4Stack=true
+
+
+hadoop-daemon.sh start namenode
+hadoop-daemon.sh start DataNode
+hadoop-daemon.sh start secondarynamenode
+hadoop-daemon.sh start TaskTracker
+hadoop-daemon.sh start JobTracker
+
+
+hadoop-daemon.sh stop datanode
+----------------- ----------------- ----------------- 
 ---------------------------**configuring bashrc linux env setup**---------------
+
+
+
 nano ~/.bashrc
 
 export HADOOP_PREFIX=/usr/local/hadoop/
