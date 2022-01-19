@@ -27,6 +27,11 @@ sudo mv hadoop-1.2.1 /usr/local/hadoop
 #imran chaush
 #+918237267747
 
+sudo yum update -y
+java -version
+sudo yum install java-1.8.0-openjdk -y
+sudo yum install java-1.8.0-openjdk-devel
+java -version
 
 nano ~/.bashrc
 
